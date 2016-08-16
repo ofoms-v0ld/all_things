@@ -1,0 +1,118 @@
+<br/>
+<div>
+    <a ui-sref="expanses.create">Create Todo</a>
+</div>
+<br/>
+
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Магазин</th>
+			<th>Адрес</th>
+			<th>Дата покупки</th>
+			<th>Редактировать</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="ex in expans">
+			<td>{{ex.supermarket}}</td>
+			<td>{{ex.adresssupermarket}}</td>			
+			<td>{{ex.datepurchase}}</td>
+			<td><button class="btn btn-primary" ng-click="editPurchase(ex)">Редактировать</button></td>
+			
+			
+		</tr>
+		
+	</tbody>
+</table>
+
+<br>
+ 
+<div class="col-md-9">
+        <div ui-view></div>
+</div>
+        
+
+<script type="text/ng-template" id="edit_expanses.html">
+    <form>
+	Магазин: <input type="text" ng-model="editExpensesObj.supermarket"><br>
+	Адрес: <input type="text" ng-model="editExpensesObj.adresssupermarket"><br>
+	Дата покупки: <input type="text" ng-model="editExpensesObj.datepurchase"><br>
+
+	<button ng-click="updateExpenses(editExpensesObj)">Save</button>
+    </form>
+</script>
+<script type="text/ng-template" id="new_expanses.html">
+<table class="table">
+        <tr>
+            
+            <th>Магазин</th>
+			<th>Адрес</th>
+			<th>Дата покупки</th>
+        </tr>
+        <tr ng-repeat="m in newMagaz.magaz">
+			<td>
+				<select ng-model="m.supermarket">
+					<option ng-repeat="obj in test2" value="{{obj.name}}">{{obj.name}}</option>
+				</select>
+			</td>
+			<td>
+				<select ng-model="m.adresssupermarket">
+					<option ng-repeat="obj in test2" value="{{obj.adress}}">{{obj.adress}}</option>
+				</select>
+			</td>
+            <td><!--<input type="text" class="input-mini" ng-model="m.datepurchase" ng-required>-->
+				<div class="row">
+    			  <div class="col-md-9">
+        			<p class="input-group">
+          				<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          				<span class="input-group-btn">
+	            			<button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          				</span>
+        			</p>
+					<div style="display:none;">{{m.datepurchase = dt}}</div>
+      			</div>
+			</td>
+        </tr>
+</table>
+<br>
+    <table class="table">
+        <tr>
+            
+            <th>Категория</th>
+            <th>Товар</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+        </tr>
+        <tr ng-repeat="t in newExpanses.items">
+			<td>
+				<select ng-model="item1" ng-options="c.category for c in listcategory">
+				</select>
+				<div style="display: none;">{{t.category = item1.category}}</div>
+			</td>
+			<td>
+				<select ng-model="item2" ng-options="p.product for p in item1.product">
+				</select>
+				<div style="display: none;">{{t.product = item2.product}}</div>
+			</td>
+
+            <td><input type="number" class="input-mini" ng-model="t.price" ng-required></td>
+            <td><input type="number" class="input-mini" ng-model="t.quantity" ng-required></td>
+            <td>{{t.summa=t.quantity * t.price}} руб</td>
+            <td>
+                [<a href ng:click="removeItem($index)">X</a>]
+            </td>
+        </tr>
+        <tr>
+            <td><a href ng-click="addItem()" class="btn btn-success btn-small ">Добавить товар</a></td>
+            <td></td>
+            <td>Total:</td>
+            <td>{{total() | currency}}</td>
+        </tr>
+        <tr>
+        <td><a href ng-click="createExpanses()" class="btn btn-success btn-small ">Добавить в базу</a></td>
+        </tr>
+</table>
+<br/>
+</script>

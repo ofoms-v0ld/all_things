@@ -1,0 +1,91 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8"/>
+  <title>SivaLabs: AngularJS</title>
+  <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css"/>
+  <link rel="stylesheet" href="webjars/font-awesome/4.1.0/css/font-awesome.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  
+  	<script src="webjars/jquery/1.11.1/jquery.js"></script>
+	<script src="webjars/bootstrap/3.2.0/js/bootstrap.js"></script>
+	<script src="webjars/angularjs/1.5.0/angular.js"></script>
+	<script src="webjars/angularjs/1.5.0/angular-route.js"></script>
+	<script src="webjars/angularjs/1.5.0/angular-resource.js"></script>
+	<script src="webjars/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.js"></script>
+	<script src="js/lib/angular-dragdrop.min.js" type="text/javascript"></script>
+	<script src="webjars/lodash/2.4.1/lodash.js"></script>
+	<script src="webjars/restangular/1.4.0/restangular.js"></script>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+	
+<!--  	<script src="js/ResponsiveVoice.js"></script> -->
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/ParttwoCtrl.js"></script>
+	<script src="js/PartfreeCtrl.js"></script>
+	<script src="js/services.js"></script>
+
+
+</head>
+<body>
+	
+ <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <!-- <div style="width:300px;vertical-align:top;font-family: Arial;font-size:9pt;line-height: normal">
+<a rel="license" href="//responsivevoice.org/"><img title="ResponsiveVoice Text To Speech" src="https://responsivevoice.org/wp-content/uploads/2014/08/120x31.png" style="float:left;padding-right:2px" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a href="//responsivevoice.org/" target="_blank" title="ResponsiveVoice Text To Speech">ResponsiveVoice</a></span> used under <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License">Non-Commercial License</a></div>
+<div style="clear:both;">&nbsp;</div>
+          <input onclick='responsiveVoice.speak("Юля - супер девочка, с восьмым марта.","Russian Female");' type='button' value='🔊 Play' /> -->
+          <a class="navbar-brand" href="#home">SivaLabs: AngularJS</a>
+        </div>
+        
+      </div>
+    </div>
+    
+     <div style="padding: 0 15px;">
+    <div class="container-fluid">    
+                 
+          <div class="row">
+          	<div class="col-md-3 sidebar">
+        
+		        <div class="list-group">
+		          <a href="#home" class="list-group-item" ng-class="{active: currentNavLink == '/home'}">
+		          	<i class="fa fa-home fa-lg"></i>&nbsp;Home
+		          </a>		         
+				  <a href="#expanses" class="list-group-item" ng-class="{active: currentNavLink == '/expanses'}">
+				  	<i class="fa fa-user fa-lg"></i>&nbsp;Contacts
+				  </a>
+				  <a href="#todos" class="list-group-item" ng-class="{active: currentNavLink == '/todos'}">
+				  	<i class="fa fa-indent fa-lg"></i>&nbsp;ToDos
+				  </a>
+				  <a href="#parttwo" class="list-group-item" ng-class="{active: currentNavLink == '/parttwo'}">
+				  	<i class="fa fa-indent fa-lg"></i>&nbsp;Serves Part II
+				  </a>
+				  <a href="#partfree" class="list-group-item" ng-class="{active: currentNavLink == '/partfree'}">
+				  	<i class="fa fa-indent fa-lg"></i>&nbsp;Serves Part III
+				  </a>
+				  
+				  
+				</div>
+
+       		 </div>
+        
+             <div class="col-md-9 col-md-offset-3">
+             	<div ui-view></div>
+             </div>
+          </div>
+    	</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<br>
+<form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="input1" class="col-sm-4 control-label">Search by product</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="input1" placeholder="Product Name" ng-model="filterTxn">
+          </div>
+        </div>
+</form>
+<br>
+	<div style="overflow: auto; height: 250px;">	     
+	 <li ng-repeat='item in editstructproduct.items | filter : filterTxn'   ng-show="item.product" data-drag="true" 
+     data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" 
+     ng-model="editstructproduct.items" jqyoui-draggable="{index: editstructproduct.items.indexOf(item) ,animate: true}">{{item.product}}</li>        
+</div>
+<br>
+<div style="height: auto; width: 300px; background: #EFEDB1; border: 1px solid #B5AF8F; background-image: url(../image/paer2.jpg);  box-shadow:14px 58px 114px rgba(0,0,0,1);background-size:cover;"  ng-form="myForm">
+<div class="header">
+<div ng-repeat="m in newMagaz.magaz">
+		<select class="checklist" ng-model="m.supermarket" style="text-align-last: center; border:0;"  name="myInput" required>
+				<option ng-repeat="obj in test2" value="{{obj.name}}">ООО "{{obj.name}}"</option>
+		</select>
+</div>ДОБРО ПОЖАЛОВАТЬ !</div>
+<div class="textcheck">
+	<div>РЕГ НОМЕР: 27799</div>
+	<div>КПП: 540445002</div>
+	<div style="float:left;">ККМ 00024749</div><div style="float:right;">ИНН 465356564565465 #1250</div><br>
+	<div style="float:left;color:#B30000">
+			  <div ng-repeat="m in newMagaz.magaz" >
+    				<p class="input-group" style="margin: 0;">
+          			     	<input id="datacheck" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" />
+          				<span class="input-group-btn" style="float: left;display: grid;position: absolute;left: 63px;top: -3px;">
+	            			<button style="background: transparent;border: 0;padding: 0;" type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          				</span>
+        			</p>
+					<div style="display:none;">{{m.datepurchase = dt}}</div>
+      			</div>
+	</div><div style="float:right;">Кассир 1</div><br>
+	<div style="float:left;">ПРОДАЖА</div><div style="float:right;">№4293</div><br>
+	<div>Автономная ККМ №3 (адрес
+		<div ng-repeat="m in newMagaz.magaz" style="display: inline-block;">
+			<select class="checklist" ng-model="m.adresssupermarket" style="width: 136px;text-align-last: center; border:0;" >
+				<option ng-repeat="obj in test2" value="{{obj.adress}}">{{obj.adress}}</option>
+			</select>
+		</div>
+	)</div>
+	<div>Мария Шарапова</div>
+	<hr class="hrr">
+</div>
+<div data-drop="true" ng-model='userPerSystem' jqyoui-droppable="{multiple:true}" class="prod">
+  <div ng-repeat="item in userPerSystem " ng-show="item.product" 
+   data-drag="true" 
+   data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" 
+   ng-model="userPerSystem" jqyoui-draggable="{index: {{$index}},animate:true}">
+                <div style="float:left"><span class="mycount"></span>{{item.product}}</div><br>
+                <div style="float:right; margin-right:10px;">
+                	<div style="float:left"><input class="forcheckinput" style="width: 13px;" type="number" ng-model="item.quantity"/>шт. x&nbsp;</div>
+                	<div style="float:left"><input style="width: 25px;text-align: center;" class="forcheckinput" type="number" ng-model="item.price"/>руб.</div>
+                	<div style="float:left"> = {{item.summa = item.price * item.quantity}} руб</div>
+                </div><br>
+                  
+  </div>
+  <hr class="hrr" style="margin-top: 10px;margin-right: 10px;">
+</div>
+
+<div class="header" style="margin: 0px;">Спасибо за покупку !</div>
+<div class="textcheck">
+	<div>Сумма скидки: 0.00 руб</div>
+	<div>Вид оплаты: наличные</div>
+	<div>Всего: </div>
+	<div style="float:left;">1</div><div style="float:right;">= {{total3()}} </div><br>
+	<div style="font-weight:900;font-size: 12px;">
+		<div style="float:left;">ИТОГ</div><div style="float:right;">= {{total3()}}</div><br>
+	</div>	
+	<div style="float:left;">НАЛИЧНЫМИ</div><div style="float:right;">= {{total3()}}</div><br>
+	<hr  style="background-image: -webkit-linear-gradient(left, #5F5D5D ,#BBADAD, #8C8C8C);
+    height: 13px;margin: 0px;margin-bottom: 3px;border:0;" ng-click="createExpanses()"/>
+</div>
+<div class="textcheck">
+	<div style="margin-left:30px;">ЭКЛЗ 5345636546</div>
+	<div style="margin-left:30px;margin-bottom: -17px;">3242342 #543534</div>
+	<div ng-show="messageMagaz" style="margin-left:30px; margin-top: 17px; color:red;">Заполните чек товарами и проставьте цену</div>
+	<div ng-show="messageMagaz2" style="margin-left:30px; margin-top: 17px; color:red;">Укажите магазин,дату покупки,адрес магазина</div>
+</div>
+
+<br>
+	<!-- <div ng-repeat="m in newMagaz.magaz" style="float: left;">
+		<select class="checklist" ng-model="m.supermarket">
+				<option ng-repeat="obj in test2" value="{{obj.name}}">{{obj.name}}</option>
+		</select>
+	</div>
+	<div ng-repeat="m in newMagaz.magaz" style="float: left;">
+		<select class="checklist" ng-model="m.adresssupermarket">
+			<option ng-repeat="obj in test2" value="{{obj.adress}}">{{obj.adress}}</option>
+		</select>
+	</div>-->
+</div> 
+<br>
+<!-- <table class="table">
+<tr>
+			<th>Магазин</th>
+			<th>Адрес</th>
+			<th>Дата покупки</th>
+</tr>
+<tr ng-repeat="m in newMagaz.magaz">
+			<td>
+				<select ng-model="m.supermarket">
+					<option ng-repeat="obj in test2" value="{{obj.name}}">{{obj.name}}</option>
+				</select>
+			</td>
+			<td>
+				<select ng-model="m.adresssupermarket">
+					<option ng-repeat="obj in test2" value="{{obj.adress}}">{{obj.adress}}</option>
+				</select>
+			</td>
+			<td>
+				<div class="row">
+    			  <div class="col-md-9">
+        			<p class="input-group">
+          				<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          				<span class="input-group-btn">
+	            			<button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          				</span>
+        			</p>
+					<div style="display:none;">{{m.datepurchase = dt}}</div>
+      			</div>
+			</td>
+</tr>
+</table>
+<ul  data-drop="true" ng-model='userPerSystem' jqyoui-droppable="{multiple:true}">
+<table class="table">
+        <tr>
+            <th>Категория</th>
+            <th>Товар</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+        </tr>
+        <tr ng-repeat="item in userPerSystem " ng-show="item.product" 
+                data-drag="true" 
+                data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" 
+                ng-model="userPerSystem" jqyoui-draggable="{index: {{$index}},animate:true}">
+                
+                <td ng-model="item.category">{{item.category}}</td>
+                <td ng-model="item.product">{{item.product}}</td>
+                <td><input type="number" ng-model="item.price"/></td>
+                <td><input type="number" ng-model="item.quantity"/></td>
+                <td>{{item.summa = item.price * item.quantity}} руб</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Итого:</td>
+        <td>{{total3()}} руб</td>
+        </tr>
+        <tr>
+        <td><a href ng-click="createExpanses()" class="btn btn-success btn-small ">Добавить в базу</a></td>
+        </tr>
+</table>
+</ul>        
+        <br>
+        <div style="margin: 91px;">{{userPerSystem}}</div>
+ -->
